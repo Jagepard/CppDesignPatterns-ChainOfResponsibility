@@ -3,5 +3,10 @@
 
 void ErrorHandler::execute()
 {
-    std::cout << typeid(ErrorHandler).name() << std::endl;
+    std::cout << typeid(*this).name() << std::endl;
+}
+
+ErrorHandler::ErrorHandler(int handlerPriority)
+{
+    priority = handlerPriority;
 }

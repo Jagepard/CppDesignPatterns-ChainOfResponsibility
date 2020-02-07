@@ -1,43 +1,50 @@
 #include <iostream>
-#include <string>
 #include "Chain.h"
 
-void Chain::execute()
+void Chain::execute(int handlerPriority)
 {
-    /*
-    for (std::map<int, MyClass>::iterator it = Map.begin(); it != Map.end(); ++it)
-    {
-        it->second.Method();
+    try {
+        if (chain.size() == 0) {
+            throw "The chain is empty";
+        }
     }
-    */
-}
-
-void Chain::addToChain(HandlerInterface* handler)
-{
-    std::string handlerName = typeid(&handler).name();
-
-    std::cout << handlerName << std::endl;
-
-    handler->execute();
-
+    catch (const char* exception) 
+    {
+        std::cerr << exception << std::endl;
+    }
 
     try {
-        if (chain.find(handlerName) != chain.end()) {
+        if (chain.find(handlerPriority) != chain.end()) {
+            for (std::pair<int, HandlerInterface*> element : chain)
+            {
+                element.second->execute();
+
+                if (element.first == handlerPriority) {
+                    return;
+                }
+            }
+        }
+
+        throw "Handler does not exist in the chain";
+    }
+    catch (const char* exception)
+    {
+        std::cerr << exception << std::endl;
+    }
+}
+
+void Chain::addToChain(HandlerInterface *handler)
+{
+    int handlerPriority = handler->getPriority();
+
+    try {
+        if (chain.find(handlerPriority) != chain.end()) {
             throw "Handler already exists";
         }
-    } catch (const char* exception) // обработчик исключений типа const char*
+    } catch (const char* exception)
     {
-        std::cerr << handlerName << ": " << exception << std::endl;
+        std::cerr << handlerPriority << ": " << exception << std::endl;
     }
 
-    chain.insert(std::make_pair(handlerName, handler));
-
-    /*
-    std::cout << handlerName << std::endl;
-
-    std::map<std::string, Scene*> Scenes;
-
-    Scenes.insert(std::make_pair("Scene_Branding", new handler));
-
-    chain.insert(std::make_pair(handlerName, handler));*/
+    chain.insert(std::make_pair(handlerPriority, handler));
 }

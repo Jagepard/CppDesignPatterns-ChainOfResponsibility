@@ -3,5 +3,10 @@
 
 void WarningHandler::execute()
 {
-    std::cout << typeid(WarningHandler).name() << std::endl;
+    std::cout << typeid(*this).name() << std::endl;
+}
+
+WarningHandler::WarningHandler(int handlerPriority)
+{
+    priority = handlerPriority;
 }

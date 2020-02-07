@@ -4,5 +4,6 @@
 class ErrorHandler : public HandlerInterface
 {
     public:
-        virtual void execute() override; // Унаследовано через HandlerInterface
+        virtual void execute() override;
+        ErrorHandler(int handlerPriority);
 };

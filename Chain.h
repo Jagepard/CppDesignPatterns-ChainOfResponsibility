@@ -1,14 +1,12 @@
 #pragma once
 #include <map>
-#include <string>
 #include "ChainInterface.h"
 
 class Chain : public ChainInterface
 {
     private:
-        std::map<std::string, HandlerInterface*> chain;
-    // Унаследовано через ChainInterface
+        std::map<int, HandlerInterface*> chain;
     public:
-        virtual void execute() override;
-        virtual void addToChain(HandlerInterface* handler) override;
+        virtual void execute(int handlerName) override;
+        virtual void addToChain(HandlerInterface *handler) override;
 };
