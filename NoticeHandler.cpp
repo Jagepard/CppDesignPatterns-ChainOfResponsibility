@@ -3,5 +3,10 @@
 
 void NoticeHandler::execute()
 {
-    std::cout << typeid(NoticeHandler).name() << std::endl;
+    std::cout << typeid(*this).name() << std::endl;
+}
+
+NoticeHandler::NoticeHandler(int handlerPriority)
+{
+    priority = handlerPriority;
 }

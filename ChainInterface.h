@@ -4,6 +4,6 @@
 class ChainInterface
 {
     public:
-        virtual void execute() = 0;
+        virtual void execute(int handlerPriority) = 0;
         virtual void addToChain(HandlerInterface* handler) = 0;
 };

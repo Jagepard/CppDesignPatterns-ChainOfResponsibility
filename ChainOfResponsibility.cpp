@@ -7,8 +7,15 @@
 int main()
 {
     Chain chain;
+    NoticeHandler notice(1);
+    WarningHandler warning(2);
+    ErrorHandler error(3);
 
-    chain.addToChain(new NoticeHandler);
-    chain.addToChain(new WarningHandler);
-    chain.addToChain(new ErrorHandler);
+    chain.addToChain(&notice);
+    chain.addToChain(&warning);
+    chain.addToChain(&error);
+
+    chain.execute(1);
+    chain.execute(2);
+    chain.execute(3);
 }
