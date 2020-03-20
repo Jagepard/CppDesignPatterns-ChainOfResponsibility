@@ -1,3 +1,8 @@
+/**
+ * @author  : Jagepard <jagepard@yandex.ru>
+ * @license https://mit-license.org/ MIT
+ */
+
 #include <iostream>
 #include "NoticeHandler.h"
 
@@ -8,5 +13,5 @@ void NoticeHandler::execute()
 
 NoticeHandler::NoticeHandler(int handlerPriority)
 {
-    priority = handlerPriority;
+    _priority = handlerPriority;
 }
