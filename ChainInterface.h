@@ -5,11 +5,10 @@
  * @license https://mit-license.org/ MIT
  */
 
-#include "HandlerInterface.h"
+#include <iostream>
 
 class ChainInterface
 {
     public:
-        virtual void execute(int handlerPriority) = 0;
-        virtual void addToChain(HandlerInterface* handler) = 0;
+        virtual void execute(std::string request) = 0;
 };
