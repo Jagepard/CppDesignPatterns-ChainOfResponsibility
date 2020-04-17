@@ -5,11 +5,8 @@
  * @license https://mit-license.org/ MIT
  */
 
-#include "HandlerInterface.h"
+#include "AbstractHandler.h"
 
-class NoticeHandler : public HandlerInterface
+class NoticeHandler : public AbstractHandler
 {
-    public:
-        virtual void execute() override;
-        NoticeHandler(int handlerPriority);
 };

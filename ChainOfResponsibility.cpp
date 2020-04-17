@@ -3,24 +3,18 @@
  * @license https://mit-license.org/ MIT
  */
 
-#include <iostream>
 #include "NoticeHandler.h"
 #include "WarningHandler.h"
 #include "ErrorHandler.h"
-#include "Chain.h"
 
 int main()
 {
-    Chain chain;
-    NoticeHandler notice(1);
-    WarningHandler warning(2);
-    ErrorHandler error(3);
+    NoticeHandler notice;
+    WarningHandler warning;
+    ErrorHandler error;
 
-    chain.addToChain(&notice);
-    chain.addToChain(&warning);
-    chain.addToChain(&error);
-
-    chain.execute(1);
-    chain.execute(2);
-    chain.execute(3);
+    notice.setNext(&warning)->setNext(&error);
+    notice.execute(typeid(notice).name());
+    notice.execute(typeid(warning).name());
+    notice.execute(typeid(error).name());
 }

@@ -5,11 +5,8 @@
  * @license https://mit-license.org/ MIT
  */
 
-#include "HandlerInterface.h"
+#include "AbstractHandler.h"
 
-class ErrorHandler : public HandlerInterface
+class ErrorHandler : public AbstractHandler
 {
-    public:
-        virtual void execute() override;
-        ErrorHandler(int handlerPriority);
 };

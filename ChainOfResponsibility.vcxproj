@@ -147,19 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Chain.cpp" />
-    <ClCompile Include="ChainInterface.cpp" />
+    <ClCompile Include="AbstractHandler.cpp" />
     <ClCompile Include="ChainOfResponsibility.cpp" />
-    <ClCompile Include="ErrorHandler.cpp" />
-    <ClCompile Include="HandlerInterface.cpp" />
-    <ClCompile Include="NoticeHandler.cpp" />
-    <ClCompile Include="WarningHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Chain.h" />
+    <ClInclude Include="AbstractHandler.h" />
     <ClInclude Include="ChainInterface.h" />
     <ClInclude Include="ErrorHandler.h" />
-    <ClInclude Include="HandlerInterface.h" />
     <ClInclude Include="NoticeHandler.h" />
     <ClInclude Include="WarningHandler.h" />
   </ItemGroup>
