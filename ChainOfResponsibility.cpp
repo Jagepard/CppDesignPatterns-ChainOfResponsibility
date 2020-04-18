@@ -13,8 +13,15 @@ int main()
     WarningHandler warning;
     ErrorHandler error;
 
-    notice.setNext(&warning)->setNext(&error);
-    notice.execute(typeid(notice).name());
-    notice.execute(typeid(warning).name());
-    notice.execute(typeid(error).name());
+    try
+    {
+        notice.setNext(&warning)->setNext(&error);
+        notice.execute(typeid(notice).name());
+        notice.execute(typeid(warning).name());
+        notice.execute(typeid(error).name());
+    }
+    catch (const char* exception)
+    {
+        std::cerr << exception << std::endl;
+    }
 }
